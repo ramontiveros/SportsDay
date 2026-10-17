@@ -1,0 +1,56 @@
+/* Home: stats bar, learning path, album, end-of-lesson screens */
+.topbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:2px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.tb-in{max-width:560px;margin:0 auto;padding:8px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.stat{display:flex;align-items:center;gap:6px;font-weight:900;font-size:1.15rem;background:none;border:0;padding:6px 8px;border-radius:12px}
+button.stat:hover{background:var(--soft)}
+.stat .emo{font-size:1.5rem}
+.stat.fire b{color:var(--orange)} .stat.xp b{color:var(--gold-d)}
+
+.path{max-width:560px;margin:0 auto;padding:16px 16px 80px}
+.unit{margin-bottom:12px}
+.ubanner{background:var(--u);color:#fff;border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;box-shadow:0 4px 0 var(--ud)}
+.ubanner small{font-weight:900;opacity:.85;letter-spacing:.08em}
+.ubanner h2{font-size:1.35rem;line-height:1.1}
+.uthumb{width:112px;flex:none;border-radius:10px;overflow:hidden;border:2px solid rgba(255,255,255,.6)}
+.uthumb svg{display:block;width:100%;height:auto}
+.nodes{display:flex;flex-direction:column;align-items:center;gap:22px;padding:58px 0 26px}
+.node-wrap{position:relative;transform:translateX(var(--x))}
+.node{width:76px;height:70px;border-radius:50%;border:0;background:var(--u);box-shadow:0 8px 0 var(--ud);display:grid;place-items:center;font-size:1.9rem;color:#fff;transition:transform .08s}
+.node:active{transform:translateY(6px);box-shadow:0 2px 0 var(--ud)}
+.node.done{font-size:1.6rem}
+.node.current{outline:6px solid #fff;box-shadow:0 8px 0 var(--ud),0 0 0 11px var(--line)}
+.node.locked{background:var(--line);box-shadow:0 8px 0 #B7B7B7;font-size:1.5rem}
+.node.locked .emo{filter:grayscale(1);opacity:.6}
+.node.open{background:#fff;border:4px solid var(--u);box-shadow:0 8px 0 var(--line)}
+.node.nope{animation:shake .35s}
+.start{position:absolute;bottom:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#fff;border:2px solid var(--line);color:var(--u);
+  font-weight:900;padding:8px 14px;border-radius:12px;white-space:nowrap;animation:bob 1.2s ease-in-out infinite;z-index:1}
+.start::after{content:"";position:absolute;left:50%;top:100%;border:8px solid transparent;border-top-color:#fff;transform:translateX(-50%)}
+.trophy-node{width:76px;height:76px;display:grid;place-items:center;font-size:3rem;filter:grayscale(1);opacity:.4}
+.trophy-node.won{filter:none;opacity:1;animation:bounce 1.6s infinite}
+
+.page{max-width:560px;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:14px}
+.page-head{display:flex;align-items:center;gap:8px}
+.album{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.sticker{border-radius:20px;padding:10px;text-align:center;border:3px dashed var(--line);background:#fff;display:flex;flex-direction:column;align-items:center;gap:4px}
+.sticker svg{width:84px;height:84px}
+.sticker b{font-weight:900;font-size:1.1rem}
+.sticker.got{border:3px solid var(--gold);background:#FFF8E1;transform:rotate(var(--r,0deg))}
+.sticker.locked svg{filter:grayscale(1) brightness(1.5);opacity:.35}
+.sticker.flip{animation:flip .8s .2s both}
+.sticker.flip svg{width:130px;height:130px}
+@keyframes flip{from{transform:rotateY(90deg) scale(.4)}}
+
+/* big centered screens (lesson complete, streak, sticker, out of hearts) */
+.big{max-width:560px;margin:0 auto;min-height:calc(100vh - 120px);padding:32px 16px 140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.big h1{font-size:clamp(1.9rem,6vw,2.4rem)}
+.big-emo{font-size:6rem}
+.big-emo.bounce{animation:bounce 1s 2}
+.t-gold{color:var(--gold-d)} .t-orange{color:var(--orange)}
+.big .streak-n{font-size:5rem;line-height:1;color:var(--orange)}
+.scards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%}
+.scard{border:3px solid var(--c);border-radius:16px;background:var(--c);overflow:hidden;display:flex;flex-direction:column}
+.scard small{color:#fff;font-weight:900;font-size:.75rem;letter-spacing:.06em;padding:4px}
+.scard b{background:#fff;border-radius:13px;padding:14px 4px;color:var(--c);font-size:1.25rem;font-weight:900}
+.scard.xp{--c:var(--gold)} .scard.acc{--c:var(--green)} .scard.time{--c:var(--blue)}
+.sticker svg{background:#D6ECF8;border-radius:14px}

@@ -1,0 +1,67 @@
+/* Tokens, buttons, sheet and shared bits */
+:root{
+  --ink:#3C3C3C; --muted:#777; --line:#E5E5E5; --line-d:#CECECE; --bg:#FFFFFF; --soft:#F7F7F7;
+  --green:#58CC02; --green-d:#58A700; --blue:#1CB0F6; --blue-d:#1899D6; --red:#FF4B4B; --red-d:#EA2B2B;
+  --gold:#FFC800; --gold-d:#E5A000; --orange:#FF9600; --orange-d:#CC7800;
+  --ok-bg:#D7FFB8; --ok-ink:#58A700; --bad-bg:#FFDFE0; --bad-ink:#EA2B2B;
+  --pc:#E0262B; --mem:#D02BC0; --prep:#FFE24A;
+  --font:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--bg);color:var(--ink)}
+body{margin:0;font-family:var(--font);font-weight:700;font-size:17px;line-height:1.4;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+h1,h2,h3{font-weight:900;margin:0}
+.emo{font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;line-height:1}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.hint{color:var(--muted);margin:0}
+
+/* 3D buttons */
+.btn{--c:var(--green);--d:var(--green-d);border:0;border-radius:16px;padding:14px 24px;min-height:50px;background:var(--c);color:#fff;
+  box-shadow:0 4px 0 var(--d);font-weight:900;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .06s,filter .1s}
+.btn:hover{filter:brightness(1.05)}
+.btn:active{transform:translateY(4px);box-shadow:none}
+.btn.green{--c:var(--green);--d:var(--green-d)}
+.btn.blue{--c:var(--blue);--d:var(--blue-d)}
+.btn.red{--c:var(--red);--d:var(--red-d)}
+.btn.orange{--c:var(--orange);--d:var(--orange-d)}
+.btn.ghost{--c:#fff;--d:var(--line);color:var(--muted);border:2px solid var(--line)}
+.btn.plain{--c:transparent;--d:transparent;color:var(--blue)}
+.btn.white{--c:#fff;--d:rgba(0,0,0,.15);color:var(--u,var(--green))}
+.btn.wide{width:100%}
+.btn:disabled{--c:var(--line);--d:transparent;color:#AFAFAF;cursor:default;box-shadow:none;transform:none;filter:none}
+.x{background:none;border:0;font-size:1.6rem;color:#AFAFAF;width:44px;height:44px;display:grid;place-items:center;border-radius:12px}
+.x:hover{background:var(--soft)}
+
+/* study-guide color code */
+.k-pc{background:var(--pc);color:#fff;border-radius:6px;padding:0 4px}
+.k-mem{text-decoration:underline;text-decoration-color:var(--mem);text-decoration-thickness:3px;text-underline-offset:4px}
+.k-place{border:2.5px solid var(--mem);border-radius:999px;padding:0 6px}
+.k-prep{background:var(--prep);color:var(--ink);border-radius:6px;padding:0 4px}
+.k-vocab{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.85rem}
+
+/* bottom sheet */
+#sheet{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:flex-end;justify-content:center;z-index:40}
+.sheet-card{background:#fff;width:min(560px,100%);max-height:88vh;overflow:auto;border-radius:22px 22px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px));
+  display:flex;flex-direction:column;gap:12px;animation:up .2s ease-out}
+.sheet-card p,.sheet-card ul{margin:0;font-weight:600}
+.sheet-card ul{padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.sheet-card.pop{background:var(--u);color:#fff}
+.sheet-card.pop .desc{opacity:.9}
+.sheet-card.locked{background:var(--soft)}
+.sheet-card.parents{font-size:.95rem}
+.toggle{display:flex;gap:10px;align-items:center;font-weight:800}
+.toggle input{width:22px;height:22px;accent-color:var(--green)}
+.quit{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+@keyframes bounce{40%{transform:scale(1.15)}}
+@keyframes bob{50%{transform:translate(-50%,-6px)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

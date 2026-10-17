@@ -1,0 +1,82 @@
+/* Lesson: top progress bar, exercise area, tiles, CHECK/CONTINUE footer */
+.lesson{max-width:680px;margin:0 auto;padding:12px 16px 190px}
+.ltop{display:flex;align-items:center;gap:12px;padding-top:env(safe-area-inset-top,0px)}
+.lbar{flex:1;height:16px;border-radius:99px;background:var(--line);overflow:hidden}
+.lbar i{display:block;height:100%;background:var(--green);border-radius:99px;transition:width .4s;box-shadow:inset 0 4px 0 rgba(255,255,255,.25)}
+.hearts{display:flex;align-items:center;gap:4px;color:var(--red);font-weight:900;font-size:1.15rem}
+.hearts .emo{font-size:1.4rem}
+.lbody{display:flex;flex-direction:column;gap:16px;padding-top:20px}
+.mistake{margin:0;color:var(--orange);font-weight:900;font-size:.9rem;letter-spacing:.04em}
+.ltitle{display:flex;align-items:center;gap:10px}
+.ltitle h1{font-size:clamp(1.4rem,4vw,1.8rem);line-height:1.2}
+.spk-sm{flex:none;width:44px;height:44px;border-radius:12px;border:0;background:var(--blue);box-shadow:0 4px 0 var(--blue-d);font-size:1.3rem;display:grid;place-items:center}
+.spk-sm:active{transform:translateY(4px);box-shadow:none}
+.lpic svg{display:block;width:100%;max-height:36vh;border-radius:16px}
+.ring{fill:none;stroke:var(--orange);stroke-width:4;stroke-dasharray:10 7;animation:march 1s linear infinite}
+@keyframes march{to{stroke-dashoffset:-34}}
+.exicon{display:grid;place-items:center}
+.exicon svg{width:150px;height:150px}
+
+/* tiles */
+.answer{min-height:124px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;padding:4px 0;
+  background:repeating-linear-gradient(to bottom,transparent 0 58px,var(--line) 58px 60px)}
+.answer.letters{min-height:64px;background:linear-gradient(to bottom,transparent 58px,var(--line) 58px 60px) no-repeat}
+.bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-top:8px}
+.slot{background:var(--line);border-radius:12px;display:inline-flex}
+.tile{background:#fff;border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;padding:9px 14px;font-weight:700;font-size:1.15rem;color:var(--ink);min-height:50px;animation:pop .15s}
+.tile:active{transform:translateY(2px);border-bottom-width:2px}
+.tile.used{visibility:hidden}
+.letters .tile{min-width:48px;font-size:1.4rem;font-weight:900}
+@keyframes pop{from{transform:scale(.85)}}
+
+/* fill the blanks */
+.fill-line{font-size:1.35rem;line-height:2.6;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.fill-line .dot{margin-left:-6px}
+.gap{display:inline-block;width:110px;height:46px;border:0;border-bottom:3px solid var(--ink);background:none;vertical-align:middle}
+.tile.in-gap{font-size:1.15rem}
+.tile.good{border-color:var(--green);background:var(--ok-bg);color:var(--ok-ink)}
+.tile.bad{border-color:var(--red);background:var(--bad-bg);color:var(--bad-ink)}
+
+/* select the image */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pcard{background:#fff;border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;padding:12px;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:800;font-size:1.1rem}
+.pcard svg{width:100%;max-width:130px;height:auto;aspect-ratio:1}
+.pcard[aria-pressed="true"]{border-color:#84D8FF;background:#DDF4FF;color:var(--blue-d)}
+.pcard.right{border-color:var(--green);background:var(--ok-bg)}
+.pcard.wrong{border-color:var(--red);background:var(--bad-bg);animation:shake .35s}
+
+/* speaking */
+.speak{display:flex;flex-direction:column;gap:18px;align-items:center}
+.bubble{position:relative;border:2px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;gap:12px;align-items:center;width:100%}
+.bubble::before{content:"";position:absolute;left:36px;top:-11px;width:18px;height:18px;background:#fff;border-left:2px solid var(--line);border-top:2px solid var(--line);transform:rotate(45deg)}
+.bubble-btns{display:flex;flex-direction:column;gap:8px}
+.spk{width:54px;height:54px;border-radius:14px;border:0;background:var(--blue);box-shadow:0 4px 0 var(--blue-d);font-size:1.5rem;display:grid;place-items:center}
+.spk.slow{width:54px;height:40px;font-size:1.2rem}
+.spk:active{transform:translateY(4px);box-shadow:none}
+.say-text{margin:0;font-size:1.5rem;line-height:1.5;font-weight:800}
+.say-text span{border-bottom:2px dashed var(--line-d);transition:color .2s}
+.say-text span.hit{color:var(--green-d);border-bottom-color:var(--green)}
+.mic{width:100%;max-width:420px;border:2px solid var(--line);border-bottom-width:5px;background:#fff;border-radius:18px;padding:18px;display:flex;gap:12px;justify-content:center;align-items:center;color:var(--blue);font-weight:900;font-size:1.1rem;letter-spacing:.06em}
+.mic .emo{font-size:1.8rem}
+.mic.on{border-color:var(--blue);background:#DDF4FF;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(28,176,246,.2)}}
+.heard{margin:0;color:var(--orange);font-weight:900;min-height:1.4em}
+.adult{width:100%;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.adult p{margin:0;color:var(--muted)}
+
+/* footer: CHECK / feedback / CONTINUE */
+.lfoot{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--line);padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));z-index:20}
+.lfoot-in{max-width:680px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.lfoot.ok{background:var(--ok-bg);border-color:transparent;animation:up .2s}
+.lfoot.bad{background:var(--bad-bg);border-color:transparent;animation:up .2s}
+.lfoot .btn{min-width:150px}
+.fbmsg{display:flex;gap:12px;align-items:flex-start;flex:1;min-width:240px}
+.fbicon{flex:none;width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:1.6rem;font-weight:900}
+.ok .fbicon,.ok h3{color:var(--ok-ink)} .bad .fbicon,.bad h3{color:var(--bad-ink)}
+.fbmsg h3{font-size:1.4rem}
+.sol{margin:4px 0 0;font-size:1.1rem;line-height:1.8}
+.ok .sol{color:var(--ok-ink)} .bad .sol{color:var(--bad-ink)}
+.combo{font-size:1rem;color:var(--orange)}
+@media (max-width:560px){.lfoot .btn{width:100%}.lfoot-in>span:empty{display:none}}
+/* icons have white parts (goal, net): give them a sky background */
+.pcard svg,.exicon svg{background:#D6ECF8;border-radius:14px}
